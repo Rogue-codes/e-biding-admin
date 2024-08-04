@@ -17,7 +17,7 @@
     "@mui/material": "^5.16.1",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@mui/x-charts": "^7.10.0",
-    "@reduxjs/toolkit": "^2.2.6",
+    "@reduxjs/toolkit": "^2.2.7",
     "antd": "^5.19.2",
     "apexcharts": "^3.50.0",
     "axios": "^1.7.2",

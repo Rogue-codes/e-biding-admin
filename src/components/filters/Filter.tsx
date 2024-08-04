@@ -8,13 +8,14 @@ import { paths } from "../../routes/paths";
 
 interface IFilters {
   isBidding: boolean;
+  filterByActive: boolean;
+  setfilterByActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export default function Filters({ isBidding }: IFilters) {
+export default function Filters({ isBidding,filterByActive,setfilterByActive }: IFilters) {
   const onChange: DatePickerProps["onChange"] = (date, dateString) => {
     console.log(date, dateString);
   };
 
-  const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate()
   return (
     <div className="w-full mt-5 justify-between items-center flex">
@@ -44,7 +45,7 @@ export default function Filters({ isBidding }: IFilters) {
             "&:hover": {
               backgroundColor: "#3E4095",
             },
-            textTransform:"capitalize"
+            textTransform: "capitalize",
           }}
         >
           Apply filter
@@ -68,7 +69,7 @@ export default function Filters({ isBidding }: IFilters) {
               backgroundColor: "#3E4095",
             },
           }}
-          onClick={()=>navigate(`${paths.CREATE_BID}`)}
+          onClick={() => navigate(`${paths.CREATE_BID}`)}
         >
           <AddCircleIcon />
           Create Bid Request
@@ -77,9 +78,9 @@ export default function Filters({ isBidding }: IFilters) {
         <div className="flex justify-start items-center gap-3">
           <div
             className="w-4 h-4 border rounded-sm flex justify-center items-center cursor-pointer border-EBD/Darkest"
-            onClick={() => setIsChecked(!isChecked)}
+            onClick={() => setfilterByActive(!filterByActive)}
           >
-            {isChecked && (
+            {filterByActive && (
               <DoneIcon
                 sx={{
                   fontSize: "12px",

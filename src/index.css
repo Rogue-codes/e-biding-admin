@@ -6,3 +6,32 @@
 *{
   font-family: "Instrument Sans", sans-serif;
 }
+
+/* Override the pagination component styles */
+.ant-pagination-item a {
+  color: #3E4095 !important;
+}
+
+.ant-pagination-item-active {
+  border-color: #3E4095 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #3E4095 !important;
+}
+
+.ant-pagination-item:hover a {
+  color: #3E4095 !important;
+}
+
+.ant-pagination-item:hover {
+  border-color: #3E4095 !important;
+}
+
+.ant-pagination-next a, .ant-pagination-prev a {
+  color: #3E4095 !important;
+}
+
+.ant-pagination-next:hover a, .ant-pagination-prev:hover a {
+  color: #3E4095 !important;
+}

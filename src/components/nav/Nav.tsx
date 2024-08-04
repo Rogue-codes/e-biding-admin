@@ -1,8 +1,14 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { IAdmin } from "../../interfaces/admin.interface";
 
 export default function Nav() {
   const location = useLocation();
+
+  const admin:IAdmin = useSelector((state: any) => state.auth.admin);
+
+  console.log("admin", admin);
 
   const getPathName = () => {
     switch (location.pathname) {
@@ -38,7 +44,7 @@ export default function Nav() {
       </div>
       <div className="w-[12rem] rounded-lg h-10 border border-b-EBD/Light flex justify-between items-center px-2">
         <div className="w-6 h-6 rounded-full border border-black"></div>
-        <p className="text-md text-EBD/Dark font-medium">Admin_2020</p>
+        <p className="text-md text-EBD/Dark font-medium">{admin.username}</p>
         <ExpandMoreIcon />
       </div>
     </nav>

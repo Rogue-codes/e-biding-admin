@@ -9,7 +9,7 @@ export interface IInitialState {
 }
 
 const token = Cookies.get("token"); 
-const user = localStorage.getItem("@JHC");
+const user = localStorage.getItem("@EBD");
 const initialState: IInitialState = {
   isAuthenticated: token ? true : false,
   admin: user ? JSON.parse(user!) : null,
