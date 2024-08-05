@@ -32,7 +32,7 @@ export default function ActivateUser({
     }
   }, [isSuccess, RejectionSuccess]);
 
-  const handleApproveUser = () => {
+  const handleApproveRejectUser = () => {
     actionType === "approve"
       ? approve({ id: id as number })
           .unwrap()
@@ -71,7 +71,7 @@ export default function ActivateUser({
           }}
           disabled={isLoading}
           className="disabled:opacity-50"
-          onClick={handleApproveUser}
+          onClick={handleApproveRejectUser}
         >
           {isLoading || rejectionLoading ? (
             <CircularProgress
