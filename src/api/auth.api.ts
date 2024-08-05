@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const BASE_URL = import.meta.env.VITE_APP_API_URL + "";
+
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000/api/v1/e-biding",
+    baseUrl: BASE_URL,
     // prepareHeaders: (headers) => {
     //   const token = localStorage.getItem("@sterling_core_token");
     //   if (token) {
@@ -15,10 +17,13 @@ export const authApi = createApi({
   }),
   tagTypes: ["auth"],
   endpoints: (builder) => ({
-    login: builder.mutation<any, {
-        email:string;
+    login: builder.mutation<
+      any,
+      {
+        email: string;
         password: string;
-    }>({
+      }
+    >({
       query: (payload) => {
         return {
           url: `/auth/admin/login`,
