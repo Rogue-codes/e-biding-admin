@@ -5,18 +5,39 @@ import DoneIcon from "@mui/icons-material/Done";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useNavigate } from "react-router-dom";
 import { paths } from "../../routes/paths";
-
+import { enqueueSnackbar } from "notistack";
+import dayjs from "dayjs";
 interface IFilters {
   isBidding: boolean;
   filterByActive: boolean;
   setfilterByActive: React.Dispatch<React.SetStateAction<boolean>>;
+  setStartDate: React.Dispatch<React.SetStateAction<string | null>>;
+  setEndDate: React.Dispatch<any>;
+  startDate: string | null;
+  setFilterDate: React.Dispatch<React.SetStateAction<boolean>>;
+  endDate: any;
 }
-export default function Filters({ isBidding,filterByActive,setfilterByActive }: IFilters) {
-  const onChange: DatePickerProps["onChange"] = (date, dateString) => {
-    console.log(date, dateString);
+export default function Filters({
+  isBidding,
+  filterByActive,
+  setfilterByActive,
+  setStartDate,
+  setEndDate,
+  startDate,
+  setFilterDate,
+  endDate,
+}: IFilters) {
+  const onChange: DatePickerProps["onChange"] = (_date, dateString) => {
+    setStartDate(dateString as string);
   };
 
-  const navigate = useNavigate()
+  const onChangeEndDate: DatePickerProps["onChange"] = (_date, dateString) => {
+    setEndDate(dateString);
+  };
+
+  const today = dayjs(startDate).startOf("day");
+
+  const navigate = useNavigate();
   return (
     <div className="w-full mt-5 justify-between items-center flex">
       <div className="flex justify-start items-center gap-3">
@@ -32,7 +53,9 @@ export default function Filters({ isBidding,filterByActive,setfilterByActive }: 
         <div className="w-[11rem] h-[30px] border border-EBD/Light rounded-md">
           <DatePicker
             className="w-full border-none h-full"
-            onChange={onChange}
+            onChange={onChangeEndDate}
+            // maxDate={}
+            minDate={today}
           />
         </div>
         <Button
@@ -47,6 +70,9 @@ export default function Filters({ isBidding,filterByActive,setfilterByActive }: 
             },
             textTransform: "capitalize",
           }}
+          disabled={!startDate && !endDate}
+          onClick={() => setFilterDate(true)}
+          className="disabled:opacity-50"
         >
           Apply filter
         </Button>

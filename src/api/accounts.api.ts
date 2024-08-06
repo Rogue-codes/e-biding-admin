@@ -21,12 +21,12 @@ export const accountsApi = createApi({
   endpoints: (builder) => ({
     getAccounts: builder.query<
       IAccountResponse,
-      { search: string; limit?: number; page: number; filter: boolean }
+      { search: string; limit?: number; page: number; filter: boolean; startDate:string; endDate:string }
     >({
-      query: ({ search, limit, page, filter }) => ({
+      query: ({ search, limit, page, filter, startDate, endDate }) => ({
         url: `/user/all?search=${search}&page=${page}&limit=${limit}&filter=${
           filter ? "active" : null
-        }`,
+        }&startDate=${startDate}&endDate=${endDate}`,
         method: "GET",
         headers: {
           "Content-Type": "application/json; charset=UTF-8",

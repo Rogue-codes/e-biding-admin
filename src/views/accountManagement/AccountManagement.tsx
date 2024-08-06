@@ -20,6 +20,9 @@ export default function AccountManagement() {
   const [filterByActive, setfilterByActive] = useState(false);
   const [id, setId] = useState<number | null>(null);
   const [actionType, setActionType] = useState<string | null>(null);
+  const [startDate, setStartDate] = useState<string | null>(null);
+  const [endDate, setEndDate] = useState<any>(null);
+  const [filterDate, setFilterDate] = useState<boolean>(false);
 
   const handleClose = () => {
     setShowModal(false);
@@ -34,6 +37,8 @@ export default function AccountManagement() {
     limit: 10,
     search: searchVal,
     filter: filterByActive,
+    startDate: filterDate ? (startDate as string) : "",
+    endDate: filterDate ? endDate : "",
   });
 
   const results = accounts?.data?.data;
@@ -151,6 +156,11 @@ export default function AccountManagement() {
         filterByActive={filterByActive}
         setfilterByActive={setfilterByActive}
         isBidding={false}
+        setStartDate={setStartDate}
+        startDate={startDate}
+        setEndDate={setEndDate}
+        setFilterDate={setFilterDate}
+        endDate={endDate}
       />
       <br />
       <Divider />
