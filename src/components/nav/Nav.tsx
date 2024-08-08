@@ -13,15 +13,15 @@ export default function Nav() {
   const getPathName = () => {
     switch (location.pathname) {
       case "/bidding-management":
-        return <h1>Bidding Management</h1>;
+        return <h1>Auction Management</h1>;
       case "/analytics":
         return <h1>Reports & Analytics</h1>;
       case "/account-management":
         return <h1>Account Management</h1>;
       case "/bidding-management/create-bid":
-        return <h1>Create Bid Request</h1>;
+        return <h1>Create Auction Request</h1>;
       default:
-        return <h1>Bidding Management</h1>;
+        return <h1>Auction Management</h1>;
     }
   };
 

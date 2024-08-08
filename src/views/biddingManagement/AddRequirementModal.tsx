@@ -3,10 +3,13 @@ import { useState } from "react";
 import generateUniqueID from "../../utils/genRandomId";
 
 interface IAddRequirementModal {
- handleAddRequirement: (type: string, requirement: {
-    id: string;
-    text: string;
-}) => void;
+  handleAddRequirement: (
+    type: string,
+    requirement: {
+      id: string;
+      text: string;
+    }
+  ) => void;
   handleClose: () => void;
 }
 export default function AddRequirementModal({
@@ -14,6 +17,18 @@ export default function AddRequirementModal({
   handleClose,
 }: IAddRequirementModal) {
   const [requirementText, setRequirementText] = useState("");
+
+  const handleKeyDown = (event: any) => {
+    if (event.key === "Enter") {
+      handleAddRequirement("requirement", {
+        id: generateUniqueID(),
+        text: requirementText,
+      });
+      setRequirementText("");
+      handleClose();
+    }
+  };
+
   return (
     <div className="w-[36vw] h-[19.4rem] rounded-lg p-10 bg-white">
       <p className="text-EBD/Darkest text-lg font-semibold leading-8">
@@ -30,6 +45,7 @@ export default function AddRequirementModal({
           variant="outlined"
           placeholder="Write Something"
           inputProps={{ "data-testid": "description" }}
+          onKeyDown={handleKeyDown}
           fullWidth
           InputLabelProps={{
             shrink: true,
@@ -77,7 +93,7 @@ export default function AddRequirementModal({
             },
           }}
           onClick={() => {
-            handleAddRequirement("requirement",{
+            handleAddRequirement("requirement", {
               id: generateUniqueID(),
               text: requirementText,
             });
