@@ -8,7 +8,7 @@ export const sideBarArr: ISideBarArr[] = [
     link: paths.ACCOUNTMANAGEMENT,
   },
   {
-    label: "Bidding Management",
+    label: "Auction Management",
     link: paths.BIDDINGMANAGEMENT,
   },
   {

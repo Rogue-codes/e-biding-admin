@@ -16,17 +16,17 @@ export default function BiddingManagement() {
       key: "date",
     },
     {
-      title: "BID ID",
+      title: "Auction ID",
       dataIndex: "bid_Id",
       key: "name",
     },
     {
-      title: "Bid Description",
+      title: "Auction Description",
       dataIndex: "description",
       key: "email",
     },
     {
-      title: "Bidders",
+      title: "Bids",
       dataIndex: "count",
       key: "status",
     },
